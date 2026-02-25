@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felix Esperson — Urban Green Space Accessibility in Mexico City</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Portfolio Shared CSS -->
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar-portfolio">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Felix Esperson</a>
+            <ul class="navbar-links">
+                <li>
+                    <a class="btn-icon" href="https://github.com/fesperson" target="_blank" rel="noopener">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a class="btn-icon" href="https://www.linkedin.com/in/felix-esperson/" target="_blank" rel="noopener">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <h1>Urban Green Space Accessibility in Mexico City</h1>
+        <p class="byline">Felix Esperson &mdash; 5 December 2021</p>
+    </div>
+
+    <!-- Article -->
+    <main class="article-body">
+
+        <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Projects
+        </a>
+
+        <h2>Introduction</h2>
+        <p>The use of urban green space (UGS) is associated with both improved mental and physical health (Lee and
+            Maheswaran, 2011), hence its distribution is an important problem of environmental justice in Mexico City.
+            During the COVID-19 pandemic the importance of UGS has been elevated as they can provide respite from
+            increased time spent indoors (Ugolini et al., 2020). Mexico City has been found to provide significantly
+            lower access to UGS for marginalised populations (Fernández-Álvarez, 2017) and the City's COVID-19
+            measures have resulted in urban park closures which disproportionately affect low- and middle-income
+            neighbourhoods (Mayen Huerta and Cafagna, 2021). This report aims to present an accurate picture of the
+            distribution of access to UGS within Mexico City as a first step to reducing inequalities of access.</p>
+
+        <figure>
+            <img src="assets/ugs1.png" alt="Area of Mexico City within a 1km walk of urban green space">
+            <figcaption>Figure 1. Area of Mexico City within a 1 km walk of urban green space (UGS)</figcaption>
+        </figure>
+
+        <p>UGS is a limited resource, therefore access depends on the ratio between UGS capacity and the number of
+            people potentially utilising it. To model this relationship, network analysis will be performed through an
+            enhanced two-step floating catchment area method (Luo and Qi, 2009). This will provide a spatial
+            accessibility value at each urban block in Mexico City. These results will then be compared to the
+            distribution of poverty in the city which may help inform efforts to improve equity in the city.</p>
+
+        <hr>
+
+        <h2>Methods</h2>
+        <p>This analysis primarily revolved around the enhanced two-step floating catchment area (E2SFCA) method
+            described by Luo and Qi (2009). The first step of this process is finding the size of the population who
+            live within three different travel distance intervals of each UGS (table 1). The population size is then
+            multiplied by a weight based on how far it is to walk to the UGS. For each UGS we then find its
+            capacity-to-population ratio.</p>
+        <p>The second step is to find the weighted sum of the capacity-to-population ratios for UGS nearby each urban
+            block to calculate the block's level of access. The resulting value at each urban block incorporates both
+            the UGS capacity proximate to each urban block and the amount of demand placed on the UGS.</p>
+
+        <h3>Table 1. Distance Interval Weighting</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Interval (metres)</th>
+                    <th>Weighting</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0 – 500</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>500 – 1500</td>
+                    <td>0.5</td>
+                </tr>
+                <tr>
+                    <td>1500 – 2500</td>
+                    <td>0.25</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>To perform this analysis, three primary datasets were used: polygons representing all the UGS in Mexico
+            City, point data representing the centroid of each of the city's urban blocks, and a road network layer.</p>
+
+        <figure>
+            <img src="assets/ugs2.png" alt="Overview of workflow to calculate access values">
+            <figcaption>Figure 2. Overview of workflow to calculate access values</figcaption>
+        </figure>
+
+        <p>The E2SFCA process requires a distance matrix as an input, which calculates how far it is to walk from each
+            urban block to all the UGS in the city. The process also requires capacity measures for each of the UGS
+            polygons. The capacity was based on UGS size categories described by Mayen Huerta (2021), although the
+            actual capacity values were estimates (table 2).</p>
+
+        <h3>Table 2. UGS Capacity Estimates</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Size (Hectares)</th>
+                    <th>Category</th>
+                    <th>Estimated Capacity (People)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&gt; 100</td>
+                    <td>City Park</td>
+                    <td>10,000</td>
+                </tr>
+                <tr>
+                    <td>20 – 100</td>
+                    <td>District Park</td>
+                    <td>5,000</td>
+                </tr>
+                <tr>
+                    <td>8 – 20</td>
+                    <td>Neighbourhood Park</td>
+                    <td>1,000</td>
+                </tr>
+                <tr>
+                    <td>0 – 8</td>
+                    <td>Children's Park</td>
+                    <td>500</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>With these inputs the E2SFCA analysis was performed by translating the steps outlined above into a series of
+            table manipulations (see appendix figure 7). Additionally, three further non-enhanced versions of the
+            floating catchment area analysis (Luo and Wang, 2003) were performed to compare the results of the
+            techniques. This process differs by only using a single catchment distance and no weightings.</p>
+
+        <hr>
+
+        <h2>Results</h2>
+        <p>There were large disparities throughout Mexico City in terms of accessibility to UGS. As can be seen in
+            figure 3, the West of the city was the largest region of high accessibility, with the North and
+            particularly the South having few or no UGS at all within walking distance. Areas that are faintly blue
+            either have few nearby UGS or the proximate population is too large to be serviced by the nearby green
+            space. An accessibility value of zero indicates that a given urban block has no parks within 2500 m, but
+            higher scores should only be understood as providing relative measures of accessibility rather than
+            providing an absolute amount.</p>
+
+        <figure>
+            <img src="assets/ugs3.png" alt="UGS accessibility in Mexico City">
+            <figcaption>Figure 3. UGS accessibility in Mexico City. A higher value is better.</figcaption>
+        </figure>
+
+        <p>In figure 4, one can see that the distribution of accessibility closely mirrors the distribution of poverty
+            in Mexico City. Only small pockets of high UGS accessibility in the East and North appear to ignore this
+            trend. To attempt to quantify this relationship, a generalised linear regression was used but it did not
+            appear to be linear, with an R-squared value of 0.0085.</p>
+
+        <figure>
+            <img src="assets/ugs4.png" alt="UGS presence, accessibility and poverty index in Mexico City">
+            <figcaption>Figure 4. UGS presence, UGS accessibility and poverty index (7 being the maximum) in Mexico
+                City (from left to right)</figcaption>
+        </figure>
+
+        <p>Figure 5 reveals that there are relatively few urban blocks in Mexico City within a 500 m walk of a UGS. On
+            the other hand, using a 1500 m catchment area we can see that approximately half of Mexico City falls
+            within this area, but the same inequalities of access still exist.</p>
+
+        <figure>
+            <img src="assets/ugs5.png" alt="UGS accessibility using a non-enhanced, two-step floating catchment approach">
+            <figcaption>Figure 5. UGS accessibility using a non-enhanced, two-step floating catchment approach</figcaption>
+        </figure>
+
+        <hr>
+
+        <h2>Discussion</h2>
+        <p>The results of this analysis clearly suggest that work must be done to improve access to UGS for lower
+            income areas in Mexico City. The solution is unlikely to be as simple as constructing more parks in the
+            East and South of the city, however. It is possible that the construction of new UGS will result in
+            gentrification (Fernandez et al., 2019) which ultimately may not help the poorer populations of Mexico
+            City to gain the benefits of UGS.</p>
+        <p>The enhanced two-step floating catchment area approach for this context appears to have been appropriate
+            (figure 2), especially when compared to the non-enhanced approach (figure 5). The approach has captured
+            the idea that areas closer to UGS tend to have higher accessibility unless too many people rely on a small
+            amount of UGS. The enhancement to the method helps to model the fact that when people must travel further
+            to reach UGS they are less likely to do so — this is known as the distance-decay effect (Brockmann et al.,
+            2006).</p>
+        <p>One limitation of the E2SFCA approach relates to its sensitivity to the chosen input capacity values and
+            distance-decay weightings. The overall distribution of accessibility, however, will remain the same for
+            all sensible inputs, though the inequalities may be more or less extreme. Further problems include not
+            considering UGS outside of the confines of the city. An inspection of satellite imagery reveals greenery
+            across much of the city's border which could potentially be utilised by those on the city's edges.
+            Additionally, it is not evident that UGS access responds linearly to the number of people using the park.
+            For example, a UGS may feel safer when many people are using it and therefore become more accessible
+            (Mayen Huerta and Cafagna, 2021). Finally, the use of centroids rather than more precise locations to
+            represent parks and urban blocks meant that some distance measures were inaccurate, particularly for
+            larger parks.</p>
+        <p>Through this analysis a clear picture of the distribution of access to UGS has been created. Areas
+            identified to have low UGS accessibility should be the focus of efforts to improve environmental justice
+            in Mexico City. Further work is required to quantify and validate the intuitive inverse relationship
+            between access and poverty levels in Mexico City.</p>
+
+        <hr>
+
+        <h2>References</h2>
+        <div class="references">
+            <p>Brockmann, D., Hufnagel, L., &amp; Geisel, T. (2006). The scaling laws of human travel. <em>Nature</em>, <em>439</em>(7075), 462–465. https://doi.org/10.1038/nature04292</p>
+            <p>Fernandez, M., Harris, B., &amp; Becerra, M. (2019). Examining the complexities of increasing park access in two Latinx neighbourhoods. <em>Local Environment</em>, <em>24</em>(12), 1136–1155. https://doi.org/10.1080/13549839.2019.1683722</p>
+            <p>Fernández-Álvarez, R. (2017). Inequitable distribution of green public space in Mexico City: an environmental injustice case. <em>Economía, sociedad y territorio</em>, <em>17</em>(54), 399–428. https://doi.org/10.22136/est002017697</p>
+            <p>Lee, A. C. K., &amp; Maheswaran, R. (2011). The health benefits of urban green spaces: a review of the evidence. <em>Journal of Public Health</em>, <em>33</em>(2), 212–222. https://doi.org/10.1093/pubmed/fdq068</p>
+            <p>Luo, W., &amp; Wang, F. (2003). Measures of spatial accessibility to health care in a GIS environment: synthesis and a case study in the Chicago Region. <em>Environment and Planning B: Planning and Design</em>, <em>30</em>(6), 865–884. https://doi.org/10.1068/b29120</p>
+            <p>Luo, W., &amp; Qi, Y. (2009). An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians. <em>Health &amp; Place</em>, <em>15</em>(4), 1100–1107. https://doi.org/10.1016/j.healthplace.2009.06.002</p>
+            <p>Mayen Huerta, C., &amp; Cafagna, G. (2021). Snapshot of the use of urban green spaces in Mexico City during the COVID-19 pandemic: a qualitative study. <em>International Journal of Environmental Research and Public Health</em>, <em>18</em>(8), 4304. https://doi.org/10.3390/ijerph18084304</p>
+            <p>Mayen Huerta, C. (2021, November 25). <em>The use of urban green spaces in Mexico City and its effect on wellbeing.</em> The University of Melbourne.</p>
+            <p>Ugolini, F., Massetti, L., Calaza-Martínez, P., Cariñanos, P., Dobbs, C., Ostoic, S. K., ... &amp; Pearlmutter, D. (2020). Effects of the COVID-19 pandemic on the use and perceptions of urban green space: an international exploratory study. <em>Urban Forestry &amp; Urban Greening</em>, <em>56</em>, 126888. https://doi.org/10.1016/j.ufug.2020.126888</p>
+        </div>
+
+        <hr>
+
+        <h2>Data Sources</h2>
+        <h3>Road Network</h3>
+        <p>BBike, 2019. BBBike extracts. <a href="https://extract.bbbike.org/" target="_blank" rel="noopener">extract.bbbike.org</a></p>
+        <h3>Urban Blocks</h3>
+        <p>CONEVAL, 2019. Índice de Rezago Social. <a href="https://www.coneval.org.mx/" target="_blank" rel="noopener">coneval.org.mx</a><br>
+        INEGI, 2013. Censos y Conteos. <a href="https://www.inegi.org.mx/" target="_blank" rel="noopener">inegi.org.mx</a></p>
+        <h3>UGS Polygons</h3>
+        <p>Green Spaces, unknown author, retrieved from assignment sheet.</p>
+
+    </main>
+
+    <footer class="site-footer">
+        Felix Esperson &copy; 2026
+    </footer>
+
+</body>
+
+</html>

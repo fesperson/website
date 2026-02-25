@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Felix — Projects</title>
+    <title>Felix Esperson — Projects</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -12,36 +15,24 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <style>
-        body {
-            background-color: #f9fafb;
-        }
+    <!-- Portfolio Shared CSS -->
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
 
-        .nav {
-            background-color: #0b0f19;
-        }
+    <style>
+        /* Neutralise Bootstrap padding so navbar matches article pages */
+        nav.navbar-portfolio { padding: 0.2; }
 
         .project-card {
             border: none;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
         .project-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-md);
         }
-
         .project-image {
             height: 200px;
             object-fit: cover;
-        }
-
-        footer {
-            background-color: #0b0f19;
-        }
-
-        .navbar-custom {
-            background-color: #f3f6ff;
         }
     </style>
 </head>
@@ -49,54 +40,43 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-custom navbar-expand-lg bg-white border-bottom sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-semibold" href="#">Felix Esperson</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto gap-2">
-
-                    <li class="nav-item">
-                        <a class="btn btn-outline-dark" href="https://github.com/fesperson">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/felix-esperson/">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar-portfolio">
+        <div class="container" style="max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;">
+            <a class="navbar-brand" href="index.html">Felix Esperson</a>
+            <ul class="navbar-links" style="display:flex;gap:0.5rem;list-style:none;margin:0;padding:0;">
+                <li>
+                    <a class="btn-icon" href="https://github.com/fesperson" target="_blank" rel="noopener">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a class="btn-icon" href="https://www.linkedin.com/in/felix-esperson/" target="_blank" rel="noopener">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
-
 
     <!-- Projects -->
     <section id="projects" class="py-5">
         <div class="container">
 
             <div class="mb-5 text-center">
-                <h2 class="fw-bold">Projects</h2>
-                <p class="text-muted">
-                    Some things I have been working on!
-                </p>
+                <h2 class="fw-bold" style="font-family: var(--font-heading);">Projects</h2>
+                <p class="text-muted">Some things I have been working on!</p>
             </div>
 
             <div class="row g-4">
 
-                <!-- Project -->
+                <!-- Project Card -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card project-card shadow h-100">
-                        <img src="assets/images/project1.png" class="card-img-top project-image" alt="Project">
+                        <img src="assets/images/project1.png" class="card-img-top project-image" alt="AI Rainfall Post-Processing Project">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">AI Rainfall Post-Processing</h5>
+                            <h5 class="card-title" style="font-family: var(--font-heading);">AI Rainfall Post-Processing</h5>
                             <p class="card-text text-muted">
                                 Machine-learning calibration of rainfall forecasts using
                                 large-scale meteorological datasets.
                             </p>
-
                             <div class="mt-auto d-flex gap-2">
                                 <a href="https://github.com/Forecast-Improvement/aifs-rainforests-paper-code"
                                     class="btn btn-primary btn-sm">
@@ -111,12 +91,79 @@
                     </div>
                 </div>
 
+                <!-- Green Space Project Card -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card shadow h-100">
+                        <div class="card-img-top project-image d-flex align-items-center justify-content-center"
+                             style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                            <i class="bi bi-tree" style="font-size: 4rem; color: #388e3c; opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" style="font-family: var(--font-heading);">Urban Green Space Accessibility in Mexico City</h5>
+                            <p class="card-text text-muted">
+                                GIS-based network analysis of equitable access to urban green space
+                                across Mexico City's neighbourhoods.
+                            </p>
+                            <div class="mt-auto d-flex gap-2">
+                                <a href="greenspace.html" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-file-earmark-text"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Landslide Project Card -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card shadow h-100">
+                        <div class="card-img-top project-image d-flex align-items-center justify-content-center"
+                             style="background: linear-gradient(135deg, #fbe9e7 0%, #ffccbc 100%);">
+                            <i class="bi bi-geo-alt" style="font-size: 4rem; color: #bf360c; opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" style="font-family: var(--font-heading);">Modelling Landslide Risk in Wellington</h5>
+                            <p class="card-text text-muted">
+                                Random forest machine learning and MCDA to map landslide
+                                hazard and vulnerability across the Wellington region.
+                            </p>
+                            <div class="mt-auto d-flex gap-2">
+                                <a href="landslide.html" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-file-earmark-text"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wind Farm Project Card -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card shadow h-100">
+                        <div class="card-img-top project-image d-flex align-items-center justify-content-center"
+                             style="background: linear-gradient(135deg, #e8f0fe 0%, #c7d9f8 100%);">
+                            <i class="bi bi-wind" style="font-size: 4rem; color: #4a7fd4; opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" style="font-family: var(--font-heading);">Situating a Wind Farm in Victoria</h5>
+                            <p class="card-text text-muted">
+                                GIS-based multi-criteria analysis to identify optimal wind farm
+                                locations across Victoria, Australia.
+                            </p>
+                            <div class="mt-auto d-flex gap-2">
+                                <a href="windfarm.html" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-file-earmark-text"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </section>
 
+    <footer class="site-footer">
+        Felix Esperson &copy; 2024
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

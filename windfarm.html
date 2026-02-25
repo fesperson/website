@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felix Esperson — Situating a Wind Farm in Victoria</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap Icons (for navbar icons) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Portfolio Shared CSS -->
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar-portfolio">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Felix Esperson</a>
+            <ul class="navbar-links">
+                <li>
+                    <a class="btn-icon" href="https://github.com/fesperson" target="_blank" rel="noopener">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a class="btn-icon" href="https://www.linkedin.com/in/felix-esperson/" target="_blank" rel="noopener">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <h1>Situating a Wind Farm in Victoria</h1>
+        <p class="byline">Felix Esperson &mdash; 1 September 2021</p>
+    </div>
+
+    <!-- Article -->
+    <main class="article-body">
+
+        <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Projects
+        </a>
+
+        <h2>Introduction</h2>
+        <p>The wind energy sector in Victoria has grown rapidly in recent decades. It now supplies more than 12% of the
+            state's energy requirements (DELWP 2020a) and the Victorian government aims to increase this to 50% by 2050
+            (DELWP 2020b). This will substantially reduce Victoria's current reliance on fossil fuels (DELWP 2020a) but
+            will require constructing many new wind farms. The aim of this report is to identify which sites in Victoria
+            have the best potential to become wind farms.</p>
+
+        <figure>
+            <img src="assets/wind1.png" alt="Location of existing wind farms in Victoria">
+            <figcaption>Figure 1: Location of existing wind farms in Victoria</figcaption>
+        </figure>
+
+        <p>To site a wind farm requires considering human, environmental and economic factors simultaneously. In
+            Australia, 75% of people support wind farms when surveyed (Lothian 2020) and a significant majority believe
+            that their benefits outweigh their effects on the visual landscape (ibid). Unfortunately, wind farms pose a
+            risk to local bird and bat species who can be injured by the turbine blades (DELWP 2020b). While this risk
+            should of course be avoided, the problem is relatively small compared to other factors such as the risk posed
+            to birds by domestic cats (Woinarski et al., 2017). Finally, for a wind farm site to be sensible it must
+            have sufficient wind velocity as well as be accessible by road and existing electricity infrastructure
+            (Baseer et al. 2017).</p>
+
+        <hr>
+
+        <h2>Methods</h2>
+        <p>To consider all relevant criteria and to weight their importance appropriately, a GIS based multi-criteria
+            decision analysis (MCDA) was used (Malczewski &amp; Rinner, 2015). The MCDA process began by modelling the
+            preferences of a 'development company' with regards to four objectives (table 1). These preferences
+            corresponded to ratings out of 100 which were then normalised to generate relative weightings. These
+            objectives were reified through the criteria in table 2 and the weighting of each objective was divided
+            equally amongst its criteria.</p>
+
+        <h3>Table 1: Objectives and Criteria</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Objectives</th>
+                    <th>Criteria</th>
+                    <th>1 — Very Poor</th>
+                    <th>2 — Poor</th>
+                    <th>3 — Moderate</th>
+                    <th>4 — Good</th>
+                    <th>5 — Very Good</th>
+                    <th>Rating</th>
+                    <th>Weighting</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Productive Location</strong></td>
+                    <td>Wind speed at 50 m above surface (m/s)</td>
+                    <td>&lt; 5.5</td>
+                    <td>5.5–6</td>
+                    <td>6–6.5</td>
+                    <td>6.5–7</td>
+                    <td>&gt; 7</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>0.308</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"><strong>Accessible</strong></td>
+                    <td>Distance to electricity network (m)</td>
+                    <td>&gt; 5000</td>
+                    <td>3000–5000</td>
+                    <td>2000–3000</td>
+                    <td>1000–2000</td>
+                    <td>&lt; 1000</td>
+                    <td rowspan="3">85</td>
+                    <td>28</td>
+                    <td>0.087</td>
+                </tr>
+                <tr>
+                    <td>Distance to roads (m)</td>
+                    <td>&gt; 10,000</td>
+                    <td>5,000–10,000</td>
+                    <td>2,500–5,000</td>
+                    <td>1,000–2,500</td>
+                    <td>&lt; 1,000</td>
+                    <td>28</td>
+                    <td>0.087</td>
+                </tr>
+                <tr>
+                    <td>Slope (degrees)</td>
+                    <td>&gt; 10</td>
+                    <td>7.5–10</td>
+                    <td>5–7.5</td>
+                    <td>2.5–5</td>
+                    <td>&lt; 2.5</td>
+                    <td>28</td>
+                    <td>0.087</td>
+                </tr>
+                <tr>
+                    <td><strong>Least Human Disturbance</strong></td>
+                    <td>Distance to residential areas (m)</td>
+                    <td>&lt; 1,000</td>
+                    <td>1,000–2,500</td>
+                    <td>2,500–5,000</td>
+                    <td>5,000–10,000</td>
+                    <td>&gt; 10,000</td>
+                    <td>70</td>
+                    <td>70</td>
+                    <td>0.215</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>Least Ecological Disturbance</strong></td>
+                    <td>Distance to Protected Areas (m)</td>
+                    <td>&lt; 1,000</td>
+                    <td>1,000–2,000</td>
+                    <td>2,000–3,500</td>
+                    <td>3,500–5,000</td>
+                    <td>&gt; 5,000</td>
+                    <td rowspan="2">70</td>
+                    <td>35</td>
+                    <td>0.108</td>
+                </tr>
+                <tr>
+                    <td>Strategic Biodiversity Value</td>
+                    <td>81–100</td>
+                    <td>61–80</td>
+                    <td>41–60</td>
+                    <td>21–40</td>
+                    <td>1–20</td>
+                    <td>35</td>
+                    <td>0.108</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A set of value ranges was created for each criterion to judge the suitability of each location in Victoria.
+            The value ranges for wind speed were chosen based on 6 ms⁻¹ at 50 metres being approximately the minimum
+            required for reasonable wind turbine performance (Blakers 2000). Other criteria ranges were modelled on those
+            used in similar studies (Baseer et al. 2017; Saraswat et al. 2021) or to create a linear distribution in
+            the case of the strategic biodiversity value.</p>
+
+        <figure>
+            <img src="assets/wind2.png" alt="Map of exclusion layer">
+            <figcaption>Figure 2: Map of exclusion layer</figcaption>
+        </figure>
+
+        <p>Before the scores could be mapped, an exclusion layer was created (figure 2) which combined exclusion layers
+            for each of the exclusion criteria in table 2.</p>
+
+        <h3>Table 2: Exclusion Criteria</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Factor</th>
+                    <th>Exclusion Criteria</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Developed area (100 ppl/km²)</td>
+                    <td>Within area</td>
+                    <td>(CIESIN 2018)</td>
+                </tr>
+                <tr>
+                    <td>Distance to airports</td>
+                    <td>Within 3000 m</td>
+                    <td>(DELWP 2021a)</td>
+                </tr>
+                <tr>
+                    <td>Distance to current wind turbines</td>
+                    <td>Within 1000 m</td>
+                    <td>(DELWP 2021c)</td>
+                </tr>
+                <tr>
+                    <td>Distance to residential areas</td>
+                    <td>Within 1000 m</td>
+                    <td>(CIESIN 2018)</td>
+                </tr>
+                <tr>
+                    <td>Protected area</td>
+                    <td>Within area</td>
+                    <td>(DELWP 2021b)</td>
+                </tr>
+                <tr>
+                    <td>Coastal bird habitat</td>
+                    <td>Within habitat area</td>
+                    <td>(Department of Transport 2021)</td>
+                </tr>
+                <tr>
+                    <td>Water body</td>
+                    <td>Within body</td>
+                    <td>(DELWP 2017)</td>
+                </tr>
+                <tr>
+                    <td>Wind speed</td>
+                    <td>Less than 5 ms⁻¹</td>
+                    <td>(Global Wind Atlas 2021)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Suitability scores were then mapped by scoring all of Victoria with regards to each criterion. The scores
+            were then combined by taking their weight-adjusted sum. The resulting map was reclassified once more using a
+            natural breaks algorithm. The same process was performed for each of the other stakeholder groups:
+            environmentalists, anti-wind farm lobbyists and the Victorian State Government (see appendix for ratings).</p>
+
+        <figure>
+            <img src="assets/wind3.png" alt="Suitability scores for development company stakeholder">
+            <figcaption>Figure 3: Suitability scores for development company stakeholder</figcaption>
+        </figure>
+
+        <p>To identify the three most promising potential wind farm sites, another suitability layer was created using
+            ten classes to generate smaller, more discrete regions. The 'regions' tool was then utilised to find the
+            three largest contiguous regions which were in the highest suitability class.</p>
+
+        <hr>
+
+        <h2>Results</h2>
+        <p>Using the development company stakeholder preferences, the largest areas of Victoria classified as 'Very
+            Good' were in the South-West. This is predominantly due to the high wind speeds in this region compared to
+            the rest of Victoria. Windy coastal and alpine regions were generally not considered due to environmental and
+            access constraints. As can be seen in figure 4, the spatial distribution of suitability between the
+            Environmentalist and Development Company stakeholders was quite similar. In contrast, the Victorian
+            Government and Anti-Wind Farm lobby stakeholder groups had high suitability levels for most locations
+            sufficiently far away from populated areas.</p>
+
+        <figure>
+            <img src="assets/wind4.png" alt="Map of all stakeholder suitability levels">
+            <figcaption>Figure 4: Map of all stakeholder suitability levels</figcaption>
+        </figure>
+
+        <p>The three potential sites selected can be seen in figure 5, they are located along major roads connected to
+            the City of Ballarat. The selected sites had an average wind speed of 6.33 ms⁻¹ which is greater than the
+            6.02 ms⁻¹ average of existing wind turbine locations.</p>
+
+        <figure>
+            <img src="assets/wind5.png" alt="Three potential wind farm sites">
+            <figcaption>Figure 5: Three potential wind farm sites</figcaption>
+        </figure>
+
+        <hr>
+
+        <h2>Discussion</h2>
+        <p>The three proposed wind farm sites in figure 5 are all located near existing wind turbines. The middle site
+            encompasses an area where a planning permit proposal has already been lodged for a wind farm (DELWP 2021e).
+            This indicates that the study methodology was valid because wind turbines are unlikely to be constructed in
+            these areas if they are truly inappropriate. All three sites appear to be predominantly farmland, hence
+            building wind turbines in these locations would require purchasing or leasing the land from its current
+            owners. Given the high energy productivity potential and accessibility of these sites compared to their low
+            human and environmental impact, they would likely be appropriate additions to the Victorian wind farm
+            system.</p>
+        <p>The criteria used to score each objective seems to have been appropriate. The areas with the highest
+            suitability scores are far away from cities and wildlife areas. The addition of the strategic biodiversity
+            values meant that important areas for Victorian ecosystems which are not formally protected were still
+            considered in the analysis. However, the accessibility criteria may require internal reweighting as the
+            slope of the terrain is arguably less important than proximity to power lines and roads.</p>
+        <p>The limitations of the study are most evident in the small number of datasets used and their limited
+            resolution. For example, the use of only mean wind speed may hide considerable variability in wind speeds
+            throughout the year. While seabird habitat data was used to exclude some coastal areas from the analysis,
+            information about inland bird distribution and migratory paths should also have been included (Taoufik and
+            Fekri, 2021). The use of a km² cell size meant that potentially suitable shorelines were poorly resolved and
+            that small distance restrictions were at times not accurately represented.</p>
+        <p>Another issue in this analysis was the subjective nature of the criteria score intervals and the
+            interpretation of suitability scores. Most similar studies used a more objective 'fuzzy set' approach to
+            define their criteria scores (Aydin et al., 2010; Sánchez-Lozano et al., 2016). Another analysis approach
+            such as cost-revenue optimisation (Van Haaren &amp; Fthenakis, 2011) may have provided a more objective
+            threshold for when a site is considered viable.</p>
+        <p>The practical outcome of this study is to drastically reduce the search area for any party wishing to
+            construct a new wind farm. It demonstrates that there is an abundance of suitable area for wind farms to be
+            constructed in Victoria to expand its wind power capacity.</p>
+
+        <hr>
+
+        <h2>References</h2>
+        <div class="references">
+            <p>Aydin, N.Y., Kentel, E., Duzgun, S., 2010. GIS-based environmental assessment of wind energy systems for spatial planning: A case study from Western Turkey. <em>Renewable and Sustainable Energy Reviews</em> 14, 364–373.</p>
+            <p>Baseer, M.A., Rehman, S., Meyer, J.P., Alam, Md.M., 2017. GIS-based site suitability analysis for wind farm development in Saudi Arabia. <em>Energy</em> 141, 1166–1176.</p>
+            <p>Blakers, A., 2000. Solar and wind electricity in Australia. <em>Australian Journal of Environmental Management</em> 7, 223–236.</p>
+            <p>Department of Environment, Land, Water &amp; Planning (DELWP), 2020a. <em>Victorian Renewable Energy Target 2019-20 Progress Report.</em></p>
+            <p>Department of Environment, Land, Water &amp; Planning (DELWP), 2020b. <em>Wind Farms Fact Sheet – Large scale wind energy generation in Victoria.</em></p>
+            <p>Department of Environment, Land, Water &amp; Planning (DELWP), 2021e. Wind energy projects. <a href="https://www.planning.vic.gov.au/permits-and-applications/specific-permit-topics/wind-energy-facilities/wind-energy-projects-planning">planning.vic.gov.au</a>.</p>
+            <p>Lothian, A., 2020. A survey of the visual impact and community acceptance of wind farms in Australia. <em>Landscape and Urban Planning</em> 56, 217–227.</p>
+            <p>Malczewski, J., Rinner, C., 2015. Introduction to GIS-MCDA, in: <em>Multicriteria Decision Analysis in Geographic Information Science.</em> Springer, Berlin, pp. 23–54.</p>
+            <p>Sánchez-Lozano, J.M., García-Cascales, M.S., Lamata, M.T., 2016. GIS-based onshore wind farm site selection using Fuzzy Multi-Criteria Decision Making methods. <em>Applied Energy</em> 171, 86–102.</p>
+            <p>Saraswat, S.K., Digalwar, A.K., Yadav, S.S., Kumar, G., 2021. MCDM and GIS based modelling technique for assessment of solar and wind farm locations in India. <em>Renewable Energy</em> 169, 865–884.</p>
+            <p>Taoufik, M., Fekri, A., 2021. GIS-based multi-criteria analysis of offshore wind farm development in Morocco. <em>Energy Conversion and Management: X</em> 11, 100103.</p>
+            <p>Van Haaren, R., Fthenakis, V., 2011. GIS-based wind farm site selection using spatial multi-criteria analysis (SMCA): Evaluating the case for New York State. <em>Renewable and Sustainable Energy Reviews</em> 15, 3332–3340.</p>
+            <p>Woinarski, J.C.Z., et al., 2017. Compilation and traits of Australian bird species killed by cats. <em>Biological Conservation</em> 216, 1–9.</p>
+        </div>
+
+        <hr>
+
+        <h2>Data Sources</h2>
+        <h3>Airport Layer</h3>
+        <p>DELWP, 2021a. Airport Area - Vicmap Transport. <a href="https://discover.data.vic.gov.au/dataset/airport-area-vicmap-transport">discover.data.vic.gov.au</a></p>
+        <h3>Coastal Bird Habitats Layer</h3>
+        <p>Department of Transport, 2021. Coastal bird habitats on the Victorian coast. <a href="https://discover.data.vic.gov.au/dataset/coastal-bird-habitats-on-the-victorian-coast">discover.data.vic.gov.au</a></p>
+        <h3>Conservation Areas Layer</h3>
+        <p>DELWP, 2021b. Parks and Conservation Reserves (PARKRES). <a href="http://services.land.vic.gov.au/SpatialDatamart/viewMetadata.html?anzlicId=ANZVI0803004883">services.land.vic.gov.au</a></p>
+        <h3>Current Wind Turbine Layer</h3>
+        <p>DELWP, 2021c. FOI - Point - Vicmap Features of Interest. <a href="https://discover.data.vic.gov.au/dataset/foi-point-vicmap-features-of-interest">discover.data.vic.gov.au</a></p>
+        <h3>DEM Layer</h3>
+        <p>Geoscience Australia, 2010. 3 second SRTM Digital Elevation Model (DEM) v01. <a href="https://data.gov.au/data/dataset/12e0731d-96dd-49cc-aa21-ebfd65a3f67a">data.gov.au</a></p>
+        <h3>Land Cover Layer</h3>
+        <p>DELWP, 2017. Victorian Land Cover Mapping 2016. <a href="https://discover.data.vic.gov.au/dataset/victorian-land-cover-mapping-2016">discover.data.vic.gov.au</a></p>
+        <h3>Population Density Layer</h3>
+        <p>CIESIN - Columbia University, 2018. Gridded Population of the World, Version 4 (GPWv4): Population Density, Revision 11. <a href="https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11/metadata">sedac.ciesin.columbia.edu</a></p>
+        <h3>Sealed Road Layer</h3>
+        <p>DELWP, 2021d. Road Network - Vicmap Transport. <a href="https://discover.data.vic.gov.au/dataset/road-network-vicmap-transport">discover.data.vic.gov.au</a></p>
+        <h3>Transmission Line Layer</h3>
+        <p>Orr, K., Allan, B., 2015. Electricity Transmission Lines. Geoscience Australia. <a href="http://dx.doi.org/10.4225/25/553DC89AD105C">doi:10.4225/25/553DC89AD105C</a></p>
+        <h3>Strategic Biodiversity Values Layer</h3>
+        <p>DELWP, 2019. NaturePrint v4.0 Strategic Biodiversity Values. <a href="https://discover.data.vic.gov.au/dataset/natureprint-v4-0-strategic-biodiversity-values">discover.data.vic.gov.au</a></p>
+        <h3>Vic LGA Layer</h3>
+        <p>Department of Industry, Science, Energy and Resources, 2014. VIC Local Government Areas. <a href="https://data.gov.au/dataset/ds-dga-bdf92691-c6fe-42b9-a0e2-a4cd716fa811/details">data.gov.au</a></p>
+        <h3>Wind Speed Layer</h3>
+        <p>Global Wind Atlas, 2021. <a href="https://globalwindatlas.info/area/Australia/Victoria">globalwindatlas.info</a></p>
+
+        <hr>
+
+        <h2>Appendix</h2>
+        <h3>Appendix Table 1: Criteria Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>Description</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wind speed at 50 m above surface</td>
+                    <td>The wind speed at approximately the height at which turbines are expected to be positioned (ms⁻¹)</td>
+                    <td>(Global Wind Atlas 2021)</td>
+                </tr>
+                <tr>
+                    <td>Distance to electricity network</td>
+                    <td>The distance to the nearest high voltage electricity transmission line (m)</td>
+                    <td>(Orr &amp; Allan 2015)</td>
+                </tr>
+                <tr>
+                    <td>Distance to roads</td>
+                    <td>The distance to the nearest sealed road (m)</td>
+                    <td>(DELWP 2021d)</td>
+                </tr>
+                <tr>
+                    <td>Slope</td>
+                    <td>The angle of slope at a given position (°)</td>
+                    <td>(Geoscience Australia 2010)</td>
+                </tr>
+                <tr>
+                    <td>Distance to residential areas</td>
+                    <td>The distance to the nearest area with a population density of greater than 100 people per km²</td>
+                    <td>(CIESIN 2018)</td>
+                </tr>
+                <tr>
+                    <td>Distance to Protected Areas</td>
+                    <td>The distance to the nearest conservation area as designated by the Victorian Government</td>
+                    <td>(DELWP 2021b)</td>
+                </tr>
+                <tr>
+                    <td>Strategic Biodiversity Value</td>
+                    <td>The relative importance of an area to the conservation of biodiversity in Victoria (1–100); lower values indicate areas where major developments should be placed to minimise impact</td>
+                    <td>(DELWP 2019)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Appendix Table 2: Stakeholder Ratings</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Objective</th>
+                    <th>Development Company</th>
+                    <th>State Government</th>
+                    <th>Anti-Wind Farm Lobby</th>
+                    <th>Environmentalists</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Productive Location</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>Accessible</td>
+                    <td>85</td>
+                    <td>80</td>
+                    <td>30</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Least human disturbance</td>
+                    <td>70</td>
+                    <td>90</td>
+                    <td>85</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>Least ecological disturbance</td>
+                    <td>70</td>
+                    <td>30</td>
+                    <td>50</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="site-footer">
+        Felix Esperson &copy; 2024
+    </footer>
+
+</body>
+
+</html>
